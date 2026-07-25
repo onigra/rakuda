@@ -2,6 +2,7 @@
 
 require_relative "rakuda/version"
 require_relative "rakuda/config"
+require_relative "rakuda/url_generator"
 
 module Rakuda
   class Error < StandardError; end
