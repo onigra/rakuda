@@ -3,7 +3,7 @@ module Rakuda
     @pattern: String
 
     def initialize: (String permalink_pattern) -> void
-    def post_url: (Date date, String slug) -> String
+    def post_url: ((Date | Time) date, String slug) -> String
     def self.category_slug: (String name) -> String
     def category_url: (String name) -> String
     def home_page_url: (Integer page_num) -> ("/" | String)
