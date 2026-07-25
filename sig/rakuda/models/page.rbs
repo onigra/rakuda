@@ -1,0 +1,33 @@
+module Rakuda
+  module Models
+    class Page < Data
+      def self.new: (
+        title: String,
+        url: String,
+        body: String,
+        date: (Time | nil),
+        categories: Array[untyped],
+        summary: String,
+        content: nil
+      ) -> Page
+
+      def initialize: (
+        title: String,
+        url: String,
+        body: String,
+        date: (Time | nil),
+        categories: Array[untyped],
+        summary: String,
+        content: nil
+      ) -> void
+
+      def title: () -> String
+      def url: () -> String
+      def body: () -> String
+      def date: () -> (Time | nil)
+      def categories: () -> Array[untyped]
+      def summary: () -> String
+      def content: () -> nil
+    end
+  end
+end

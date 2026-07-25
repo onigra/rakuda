@@ -1,0 +1,36 @@
+module Rakuda
+  module Models
+    class Post < Data
+      def self.new: (
+        title: String,
+        slug: String,
+        date: Time,
+        categories: Array[untyped],
+        draft: bool,
+        body: String,
+        url: String,
+        summary: String
+      ) -> Post
+
+      def initialize: (
+        title: String,
+        slug: String,
+        date: Time,
+        categories: Array[untyped],
+        draft: bool,
+        body: String,
+        url: String,
+        summary: String
+      ) -> void
+
+      def title: () -> String
+      def slug: () -> String
+      def date: () -> Time
+      def categories: () -> Array[untyped]
+      def draft: () -> bool
+      def body: () -> String
+      def url: () -> String
+      def summary: () -> String
+    end
+  end
+end
