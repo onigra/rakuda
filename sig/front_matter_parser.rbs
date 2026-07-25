@@ -1,0 +1,28 @@
+module FrontMatterParser
+  module Loader
+    class Yaml
+      @allowlist_classes: Array[Class]
+
+      def initialize: (?allowlist_classes: Array[Class]) -> void
+      def call: (String string) -> Hash[String, untyped]
+    end
+  end
+
+  class Parsed
+    @front_matter: Hash[String, untyped]
+    @content: String
+
+    def initialize: (front_matter: Hash[String, untyped], content: String) -> void
+    def front_matter: () -> Hash[String, untyped]
+    def content: () -> String
+    def []: (String key) -> untyped
+  end
+
+  class Parser
+    @syntax_parser: untyped
+    @loader: Loader::Yaml
+
+    def initialize: (Symbol syntax_parser, ?loader: Loader::Yaml) -> void
+    def call: (String string) -> Parsed
+  end
+end
