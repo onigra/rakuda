@@ -3,11 +3,9 @@ module Rakuda
     @source_dir: String
 
     def self.load: (String source_dir) -> Array[Models::Page]
-    def initialize: (String source_dir) -> void
-    def load: () -> Array[Models::Page]
 
     private
 
-    def build: (String path) -> Models::Page
+    def self.build: (String path) -> Models::Page
   end
 end

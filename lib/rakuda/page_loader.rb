@@ -7,15 +7,7 @@ require_relative "models/page"
 module Rakuda
   class PageLoader
     def self.load(source_dir)
-      new(source_dir).load
-    end
-
-    def initialize(source_dir)
-      @source_dir = source_dir
-    end
-
-    def load
-      path = File.join(@source_dir, "content", "about.md")
+      path = File.join(source_dir, "content", "about.md")
       return [] unless File.exist?(path)
 
       [build(path)]
@@ -23,7 +15,7 @@ module Rakuda
 
     private
 
-    def build(path)
+    def self.build(path)
       front, body = FrontMatter.parse_file(path)
       summary, = FrontMatter.split_summary(body)
 
@@ -37,5 +29,6 @@ module Rakuda
         content: nil
       )
     end
+    private_class_method :build
   end
 end
