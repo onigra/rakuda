@@ -1,0 +1,11 @@
+base_url: "https://example.com"
+title: "Test Site"
+language: "ja"
+author: "Tester"
+paginate: 10
+permalinks:
+  post: "/blog/:year/:month/:day/:slug/"
+taxonomies:
+  category: "categories"
+params:
+  menu: []
