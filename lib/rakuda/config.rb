@@ -9,6 +9,7 @@ module Rakuda
   class Config
     def self.load(path)
       data = YAML.safe_load_file(path, permitted_classes: [Date, Time], aliases: true)
+      default_params = {} #: Hash[untyped, untyped]
 
       new(
         base_url: data.fetch("base_url"),
@@ -18,7 +19,7 @@ module Rakuda
         paginate: data.fetch("paginate", 10),
         permalink_post: data.dig("permalinks", "post"),
         taxonomy_category: data.dig("taxonomies", "category") || "categories",
-        params: data.fetch("params", {})
+        params: data.fetch("params", default_params)
       )
     end
   end
