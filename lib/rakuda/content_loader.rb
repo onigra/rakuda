@@ -7,6 +7,8 @@ require_relative "url_generator"
 
 module Rakuda
   class ContentLoader
+    DEFAULT_PERMALINK_POST = "/:year/:month/:day/:slug/"
+
     YAML_LOADER = FrontMatterParser::Loader::Yaml.new(allowlist_classes: [Time, Date])
     PARSER = FrontMatterParser::Parser.new(:md, loader: YAML_LOADER)
 
@@ -17,7 +19,8 @@ module Rakuda
     def initialize(source_dir, config)
       @source_dir = source_dir
       @config = config
-      @url_gen = UrlGenerator.new(config.permalink_post)
+      permalink = config.permalink_post || DEFAULT_PERMALINK_POST
+      @url_gen = UrlGenerator.new(permalink)
     end
 
     def load
