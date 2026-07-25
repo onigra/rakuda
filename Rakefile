@@ -11,4 +11,12 @@ end
 
 require "standard/rake"
 
-task default: %i[test standard]
+task default: %i[test standard rbs steep]
+
+task :rbs do
+  sh "rbs validate"
+end
+
+task :steep do
+  sh "steep check"
+end
