@@ -1,4 +1,5 @@
 require "yaml"
+require "date"
 
 module Rakuda
   Config = Data.define(
