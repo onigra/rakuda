@@ -6,8 +6,6 @@ require "date"
 require_relative "url_generator"
 
 module Rakuda
-  LoadResult = Data.define(:posts, :pages)
-
   class ContentLoader
     YAML_LOADER = FrontMatterParser::Loader::Yaml.new(allowlist_classes: [Time, Date])
     PARSER = FrontMatterParser::Parser.new(:md, loader: YAML_LOADER)
@@ -25,7 +23,7 @@ module Rakuda
     def load
       posts = load_posts
       pages = load_pages
-      LoadResult.new(posts: posts, pages: pages)
+      Models::Contents.new(posts: posts, pages: pages)
     end
 
     private
