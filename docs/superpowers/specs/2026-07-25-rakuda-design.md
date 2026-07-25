@@ -295,10 +295,10 @@ rakuda/
 ├── exe/rkd
 ├── test/
 │   ├── test_helper.rb
-│   ├── test_url_generator.rb
-│   ├── test_frontmatter.rb
-│   ├── test_paginator.rb
-│   └── test_pipeline.rb
+│   ├── url_generator_test.rb
+│   ├── frontmatter_test.rb
+│   ├── paginator_test.rb
+│   └── pipeline_test.rb
 ├── test/fixtures/              # 最小 site
 ├── rakuda.gemspec
 └── Rakefile                    # task :test
