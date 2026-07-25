@@ -1,0 +1,36 @@
+module Rakuda
+  class Config < Data
+    def self.load: (String path) -> Config
+
+    def self.new: (
+      base_url: String,
+      title: String,
+      language: String,
+      author: String,
+      paginate: Integer,
+      permalink_post: String?,
+      taxonomy_category: String,
+      params: Hash[untyped, untyped]
+    ) -> Config
+
+    def initialize: (
+      base_url: String,
+      title: String,
+      language: String,
+      author: String,
+      paginate: Integer,
+      permalink_post: String?,
+      taxonomy_category: String,
+      params: Hash[untyped, untyped]
+    ) -> void
+
+    def base_url: () -> String
+    def title: () -> String
+    def language: () -> String
+    def author: () -> String
+    def paginate: () -> Integer
+    def permalink_post: () -> String?
+    def taxonomy_category: () -> String
+    def params: () -> Hash[untyped, untyped]
+  end
+end
