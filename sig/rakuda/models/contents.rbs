@@ -1,0 +1,10 @@
+module Rakuda
+  module Models
+    class Contents < Data
+      def self.new: (posts: Array[Models::Post], pages: Array[Models::Page]) -> Models::Contents
+      def initialize: (posts: Array[Models::Post], pages: Array[Models::Page]) -> void
+      def posts: () -> Array[Models::Post]
+      def pages: () -> Array[Models::Page]
+    end
+  end
+end
