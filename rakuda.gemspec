@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["onigra"]
   spec.email = ["3280467rec@gmail.com"]
 
-  spec.summary       = "Minimal static site generator"
+  spec.summary = "Minimal static site generator"
   spec.description = "Minimal static site generator for onigra.github.io"
   spec.homepage = "https://github.com/onigra/rakuda"
   spec.required_ruby_version = ">= 3.2.0"
@@ -31,8 +31,8 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "front_matter_parser", "~> 1.0"
   spec.add_runtime_dependency "kramdown", "~> 2.4"
   spec.add_runtime_dependency "kramdown-parser-gfm", "~> 1.1"
-  spec.add_runtime_dependency "front_matter_parser", "~> 1.0"
   spec.add_runtime_dependency "rack", "~> 3.0"
 end
