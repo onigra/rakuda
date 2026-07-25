@@ -1,0 +1,10 @@
+module Rakuda
+  module FrontMatter
+    YAML_LOADER: FrontMatterParser::Loader::Yaml
+    PARSER: FrontMatterParser::Parser
+
+    def self.parse_file: (String path) -> [Hash[String, untyped], String]
+    def self.parse: (String content) -> [Hash[String, untyped], String]
+    def self.split_summary: (String body) -> [String, String]
+  end
+end

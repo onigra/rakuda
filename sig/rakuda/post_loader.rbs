@@ -1,0 +1,16 @@
+module Rakuda
+  class PostLoader
+    DEFAULT_PERMALINK_POST: String
+
+    @source_dir: String
+    @url_gen: UrlGenerator
+
+    def self.load: (String source_dir, Config config) -> Array[Models::Post]
+    def initialize: (String source_dir, Config config) -> void
+    def load: () -> Array[Models::Post]
+
+    private
+
+    def build: (String path) -> Models::Post
+  end
+end

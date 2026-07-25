@@ -1,23 +1,10 @@
 module Rakuda
   class ContentLoader
-    DEFAULT_PERMALINK_POST: String
-    YAML_LOADER: FrontMatterParser::Loader::Yaml
-    PARSER: FrontMatterParser::Parser
-
     @source_dir: String
     @config: Config
-    @url_gen: UrlGenerator
 
     def self.load: (String source_dir, Config config) -> Models::Contents
     def initialize: (String source_dir, Config config) -> void
     def load: () -> Models::Contents
-
-    private
-
-    def load_posts: () -> Array[Models::Post]
-    def load_pages: () -> Array[Models::Page]
-    def build_post: (String path) -> Models::Post
-    def build_page: (String path) -> Models::Page
-    def split_summary: (String body) -> [String, String]
   end
 end
