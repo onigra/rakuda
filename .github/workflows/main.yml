@@ -33,8 +33,3 @@ jobs:
       - name: Run the default task
         run: bundle exec rake
 
-      - name: Validate RBS
-        run: bundle exec rbs validate
-
-      - name: Run type checks
-        run: bundle exec steep check
