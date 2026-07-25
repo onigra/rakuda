@@ -6,7 +6,6 @@ module Rakuda
     :base_url, :title, :language, :author, :paginate,
     :permalink_post, :taxonomy_category, :params
   )
-
   class Config
     def self.load(path)
       data = YAML.safe_load_file(path, permitted_classes: [Date, Time], aliases: true)
