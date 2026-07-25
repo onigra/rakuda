@@ -1,10 +1,5 @@
 module Rakuda
   class ContentLoader
-    @source_dir: String
-    @config: Config
-
     def self.load: (String source_dir, Config config) -> Models::Contents
-    def initialize: (String source_dir, Config config) -> void
-    def load: () -> Models::Contents
   end
 end
