@@ -1,0 +1,5 @@
+module Rakuda
+  module MarkdownRenderer
+    def self.render: (String markdown) -> String
+  end
+end

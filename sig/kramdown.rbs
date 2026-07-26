@@ -1,0 +1,6 @@
+module Kramdown
+  class Document
+    def initialize: (String markdown, ?input: String) -> void
+    def to_html: () -> String
+  end
+end
