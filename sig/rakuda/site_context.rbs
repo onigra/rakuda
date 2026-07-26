@@ -1,0 +1,13 @@
+module Rakuda
+  module SiteContext
+    type site_hash = {
+      title: String,
+      base_url: String,
+      language: String,
+      author: String,
+      params: Hash[untyped, untyped]
+    }
+
+    def self.build: (Config config) -> site_hash
+  end
+end

@@ -1,0 +1,13 @@
+module Rakuda
+  class TemplateRenderer
+    @layouts_dir: String
+
+    def initialize: (String layouts_dir) -> void
+    def render: (String template_name, Hash[Symbol, untyped] assigns) -> String
+
+    class AssignContext
+      def initialize: (Hash[Symbol, untyped] assigns) -> void
+      def get_binding: () -> Binding
+    end
+  end
+end
