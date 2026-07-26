@@ -1,0 +1,11 @@
+module Rakuda
+  module Generators
+    class Robots
+      @config: Config
+
+      def initialize: (config: Config) -> void
+
+      def generate: () -> String
+    end
+  end
+end

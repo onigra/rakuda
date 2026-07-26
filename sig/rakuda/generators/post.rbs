@@ -1,0 +1,24 @@
+module Rakuda
+  module Generators
+    class Post
+      @config: Config
+      @posts: Array[Models::Post]
+      @renderer: TemplateRenderer
+      @markdown: markdown
+      @site: SiteContext::site_hash
+
+      def initialize: (
+        config: Config,
+        posts: Array[Models::Post],
+        renderer: TemplateRenderer,
+        markdown: markdown
+      ) -> void
+
+      def generate: () -> Array[generated_page]
+
+      private
+
+      def post_to_page_hash: (Models::Post post, String content_html) -> Hash[Symbol, untyped]
+    end
+  end
+end

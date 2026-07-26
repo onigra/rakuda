@@ -1,0 +1,10 @@
+module Rakuda
+  module Generators
+    # 各 generator が返す戻り値の型
+    type generated_page = { url: String, content: String }
+    
+    # Generator に渡す markdown: 引数の型
+    # インスタンスではなく MarkdownRenderer そのものを渡すので、singleton() を使う
+    type markdown = singleton(MarkdownRenderer)
+  end
+end

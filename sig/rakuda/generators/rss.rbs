@@ -1,0 +1,18 @@
+module Rakuda
+  module Generators
+    class Rss
+      @config: Config
+      @posts: Array[Models::Post]
+      @renderer: TemplateRenderer
+      @site: SiteContext::site_hash
+
+      def initialize: (
+        config: Config,
+        posts: Array[Models::Post],
+        renderer: TemplateRenderer
+      ) -> void
+
+      def generate: () -> String
+    end
+  end
+end

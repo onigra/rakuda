@@ -1,0 +1,26 @@
+module Rakuda
+  module Generators
+    class Home
+      @config: Config
+      @posts: Array[Models::Post]
+      @renderer: TemplateRenderer
+      @markdown: markdown
+      @site: SiteContext::site_hash
+      @url_gen: UrlGenerator
+
+      def initialize: (
+        config: Config,
+        posts: Array[Models::Post],
+        renderer: TemplateRenderer,
+        markdown: markdown
+      ) -> void
+
+      def generate: () -> Array[generated_page]
+
+      private
+
+      def build_paginator: (Array[Paginator::PaginatedPage] paginated, Paginator::PaginatedPage current_page) -> Hash[Symbol, untyped]
+      def post_to_list_hash: (Models::Post post) -> Hash[Symbol, untyped]
+    end
+  end
+end
