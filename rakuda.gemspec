@@ -35,5 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "kramdown", "~> 2.4"
   spec.add_runtime_dependency "kramdown-parser-gfm", "~> 1.1"
   spec.add_runtime_dependency "rack", "~> 3.0"
+  spec.add_runtime_dependency "rackup", "~> 2.1"
+  spec.add_runtime_dependency "webrick", "~> 1.8"
   spec.add_development_dependency "test-unit"
 end
