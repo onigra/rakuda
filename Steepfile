@@ -2,5 +2,5 @@ target :lib do
   signature "sig"
   check "lib"
 
-  library "yaml", "date", "time", "fileutils"
+  library "yaml", "date", "time", "fileutils", "optparse"
 end
