@@ -1,0 +1,5 @@
+module Rackup
+  module Server
+    def self.start: (?app: untyped, ?Port: Integer, ?Host: String) -> void
+  end
+end

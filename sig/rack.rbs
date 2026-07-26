@@ -1,0 +1,9 @@
+module Rack
+  type app = ^(Hash[untyped, untyped]) -> [Integer, Hash[String, String], Array[untyped]]
+
+  class Static
+    def initialize: (app app, ?root: String, ?urls: Array[String], ?index: String) -> void
+
+    def call: (Hash[untyped, untyped] env) -> [Integer, Hash[String, String], untyped]
+  end
+end
