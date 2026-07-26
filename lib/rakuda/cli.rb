@@ -2,6 +2,8 @@
 
 require "optparse"
 
+require_relative "server"
+
 module Rakuda
   class CLI
     def self.run(argv)
