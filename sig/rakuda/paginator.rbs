@@ -1,0 +1,15 @@
+module Rakuda
+  module Paginator
+    class PaginatedPage < Data
+      def self.new: (items: Array[untyped], number: Integer, total: Integer) -> PaginatedPage
+
+      def initialize: (items: Array[untyped], number: Integer, total: Integer) -> void
+
+      def items: () -> Array[untyped]
+      def number: () -> Integer
+      def total: () -> Integer
+    end
+
+    def self.paginate: (Array[untyped] items, per_page: Integer) -> Array[PaginatedPage]
+  end
+end
