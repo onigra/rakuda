@@ -1,6 +1,9 @@
 module Rakuda
   module Server
-    def self.app: (String root) -> untyped
+    EMPTY_HEADERS: Hash[String, String]
+    EMPTY_BODY: Array[untyped]
+
+    def self.app: (String root) -> Rack::Static
     def self.start: (root: String, ?port: Integer) -> void
   end
 end
