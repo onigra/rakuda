@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
 require_relative "../lib/rakuda"
-puts "rkd #{Rakuda::VERSION}"
+require_relative "../lib/rakuda/cli"
+Rakuda::CLI.run(ARGV)
