@@ -1,0 +1,9 @@
+module Rakuda
+  class Pipeline
+    @source: String
+    @destination: String
+
+    def initialize: (source: String, destination: String) -> void
+    def run: () -> void
+  end
+end

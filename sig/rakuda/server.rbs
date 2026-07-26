@@ -1,0 +1,5 @@
+module Rakuda
+  module Server
+    def self.start: (root: String, ?port: Integer) -> void
+  end
+end

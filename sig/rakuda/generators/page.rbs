@@ -1,0 +1,24 @@
+module Rakuda
+  module Generators
+    class Page
+      @config: Config
+      @page: Models::Page
+      @renderer: TemplateRenderer
+      @markdown: markdown
+      @site: SiteContext::site_hash
+
+      def initialize: (
+        config: Config,
+        page: Models::Page,
+        renderer: TemplateRenderer,
+        markdown: markdown
+      ) -> void
+
+      def generate: () -> generated_page
+
+      private
+
+      def page_to_hash: (String content_html) -> Hash[Symbol, untyped]
+    end
+  end
+end
