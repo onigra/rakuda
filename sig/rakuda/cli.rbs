@@ -1,0 +1,11 @@
+module Rakuda
+  class CLI
+    type options = { source: String, destination: String, port: Integer }
+
+    def self.run: (Array[String] argv) -> void
+    def self.usage: () -> String
+
+    def run: (Array[String] argv) -> void
+    def usage: () -> String
+  end
+end
