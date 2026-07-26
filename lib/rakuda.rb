@@ -12,6 +12,8 @@ require_relative "rakuda/generators/section"
 require_relative "rakuda/generators/taxonomy"
 require_relative "rakuda/generators/rss"
 require_relative "rakuda/generators/robots"
+require_relative "rakuda/generators/page"
+require_relative "rakuda/pipeline"
 
 module Rakuda
   class Error < StandardError; end
