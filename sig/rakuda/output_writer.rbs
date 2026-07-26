@@ -1,0 +1,14 @@
+module Rakuda
+  class OutputWriter
+    @dest: String
+
+    def initialize: (String destination_dir) -> void
+    def write_page: (String url, String content) -> void
+    def write_file: (String relative_path, String content) -> void
+    def copy_static: (String source_dir) -> void
+
+    private
+
+    def url_to_dir: (String url) -> String
+  end
+end
