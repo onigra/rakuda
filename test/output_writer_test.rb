@@ -18,7 +18,7 @@ class TestOutputWriter < Test::Unit::TestCase
   def test_write_page_creates_index_html
     # Given
     @writer.write_page("/blog/2026/01/01/hello/", "<html>hi</html>")
-    
+
     # When
     path = File.join(@dest, "blog/2026/01/01/hello/index.html")
 
@@ -30,7 +30,7 @@ class TestOutputWriter < Test::Unit::TestCase
   def test_write_root_page
     # When
     @writer.write_page("/", "<html>home</html>")
-    
+
     # Then
     assert File.exist?(File.join(@dest, "index.html"))
   end
