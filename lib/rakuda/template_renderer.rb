@@ -11,12 +11,7 @@ module Rakuda
     ###
     #
     # @param template_name [String] テンプレートファイル名
-    # @param assigns [Hash[:site, :page]] テンプレートに渡す要素
-    #   現時点では { site: ..., page: ... } のみ想定している
-    #
-    # - site: SiteContext.build(config) の戻り値
-    # - page: テンプレート表示用 Hash（Post 等から変換。Models::Page とは別）
-    # - テンプレート内では @page[:title] のように Hash アクセスする。
+    # @param assigns [Hash] テンプレートに渡す要素
     #
     def render(template_name, assigns)
       path = File.join(@layouts_dir, "#{template_name}.erb")
@@ -28,7 +23,7 @@ module Rakuda
     ###
     #
     # assigns の各キーを ERB の binding から参照できるように、インスタンス変数として定義する
-    # 例: { site: {...}, page: {...} } → ERB 内で @site / @page が使える。
+    # 例: { site: {...}, page: {...} } → ERB 内で @site / @page が使える
     #
     class AssignContext
       def initialize(assigns)
