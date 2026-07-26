@@ -1,5 +1,6 @@
 module Rakuda
   module Server
+    def self.app: (String root) -> untyped
     def self.start: (root: String, ?port: Integer) -> void
   end
 end
