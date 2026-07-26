@@ -1,0 +1,4 @@
+class ERB
+  def self.new: (String src) -> instance
+  def result: (Binding? b) -> String
+end
