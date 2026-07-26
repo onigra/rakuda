@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title><%= @site[:title] %></title>
+    <link><%= @site[:base_url] %>/</link>
+    <% @posts.first(20).each do |post| %>
+    <item>
+      <title><%= post[:title] %></title>
+      <link><%= @site[:base_url] %><%= post[:url] %></link>
+      <pubDate><%= post[:date].httpdate %></pubDate>
+    </item>
+    <% end %>
+  </channel>
+</rss>
