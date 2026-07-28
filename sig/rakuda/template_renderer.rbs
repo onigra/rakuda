@@ -6,7 +6,11 @@ module Rakuda
     def render: (String template_name, Hash[Symbol, untyped] assigns) -> String
 
     class AssignContext
-      def initialize: (Hash[Symbol, untyped] assigns) -> void
+      @assigns: Hash[Symbol, untyped]
+      @renderer: TemplateRenderer
+
+      def initialize: (Hash[Symbol, untyped] assigns, TemplateRenderer renderer) -> void
+      def render_partial: (String name, ?Hash[Symbol, untyped] extra) -> String
       def get_binding: () -> Binding
     end
   end
