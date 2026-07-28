@@ -31,7 +31,6 @@ class TestTemplateRenderer < Test::Unit::TestCase
     renderer = Rakuda::TemplateRenderer.new(File.join(root, "layouts"))
 
     # When
-    config = Rakuda::Config.load(File.join(root, "site.yml"))
     html = renderer.render("with_partial", {
       site: Rakuda::SiteContext.build(config),
       page: {title: "Partial", content: "<p>Body</p>"}
