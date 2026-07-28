@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "fileutils"
 require "rakuda/template_renderer"
 require "rakuda/site_context"
 require "rakuda/config"
@@ -20,6 +21,24 @@ class TestTemplateRenderer < Test::Unit::TestCase
 
     # Then
     assert_include(html, "<h1>Hi</h1>")
+    assert_include(html, "<p>Body</p>")
+  end
+
+  def test_render_partial
+    # Given
+    root = File.expand_path("fixtures/minimal", __dir__)
+    config = Rakuda::Config.load(File.join(root, "site.yml"))
+    renderer = Rakuda::TemplateRenderer.new(File.join(root, "layouts"))
+
+    # When
+    config = Rakuda::Config.load(File.join(root, "site.yml"))
+    html = renderer.render("with_partial", {
+      site: Rakuda::SiteContext.build(config),
+      page: {title: "Partial", content: "<p>Body</p>"}
+    })
+
+    # Then
+    assert_include(html, "<p>Hello Partial</p>")
     assert_include(html, "<p>Body</p>")
   end
 end
