@@ -11,11 +11,18 @@ module Rakuda
     end
 
     def run(argv)
-      command = argv.shift or abort self.class.usage
+      command =
+        case argv.first
+        when "build", "serve" then argv.shift
+        when nil then :default
+        when /\A-/ then :default
+        else abort self.class.usage
+        end
+
       options = {source: Dir.pwd, destination: "public", port: 7777} #: CLI::options
 
       OptionParser.new do |opts|
-        opts.banner = "Usage: rkd #{command} [options]"
+        opts.banner = "Usage: rkd [build|serve] [options]"
         opts.on("--source PATH") { |v| options[:source] = v }
         opts.on("--destination PATH") { |v| options[:destination] = v }
         opts.on("--port PORT", Integer) { |v| options[:port] = v }
@@ -23,9 +30,12 @@ module Rakuda
 
       case command
       when "build"
-        Pipeline.new(source: options[:source], destination: options[:destination]).run
+        build(options)
       when "serve"
-        Server.start(root: options[:destination], port: options[:port])
+        serve(options)
+      when :default
+        build(options)
+        serve(options)
       else
         abort self.class.usage
       end
@@ -36,7 +46,17 @@ module Rakuda
     end
 
     def self.usage
-      "Usage: rkd build|serve [--source PATH] [--destination public] [--port 4000]"
+      "Usage: rkd [build|serve] [--source PATH] [--destination public] [--port 7777]"
+    end
+
+    private
+
+    def build(options)
+      Pipeline.new(source: options[:source], destination: options[:destination]).run
+    end
+
+    def serve(options)
+      Server.start(root: options[:destination], port: options[:port])
     end
   end
 end
