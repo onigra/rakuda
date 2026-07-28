@@ -7,16 +7,13 @@ require_relative "server"
 module Rakuda
   class CLI
     def self.run(argv)
-      new.run(argv)
-    end
-
-    def run(argv)
       command =
         case argv.first
         when "build", "serve" then argv.shift
         when nil then :default
+        # サブコマンドを省略して、最初の引数がオプション（-- で始まる）のときは :default を実行
         when /\A-/ then :default
-        else abort self.class.usage
+        else abort usage
         end
 
       options = {source: Dir.pwd, destination: "public", port: 7777} #: CLI::options
@@ -37,26 +34,24 @@ module Rakuda
         build(options)
         serve(options)
       else
-        abort self.class.usage
+        abort usage
       end
-    end
-
-    def usage
-      self.class.usage
     end
 
     def self.usage
       "Usage: rkd [build|serve] [--source PATH] [--destination public] [--port 7777]"
     end
 
-    private
+    class << self
+      private
 
-    def build(options)
-      Pipeline.new(source: options[:source], destination: options[:destination]).run
-    end
+      def build(options)
+        Pipeline.new(source: options[:source], destination: options[:destination]).run
+      end
 
-    def serve(options)
-      Server.start(root: options[:destination], port: options[:port])
+      def serve(options)
+        Server.start(root: options[:destination], port: options[:port])
+      end
     end
   end
 end

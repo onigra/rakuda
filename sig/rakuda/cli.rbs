@@ -4,8 +4,5 @@ module Rakuda
 
     def self.run: (Array[String] argv) -> void
     def self.usage: () -> String
-
-    def run: (Array[String] argv) -> void
-    def usage: () -> String
   end
 end
