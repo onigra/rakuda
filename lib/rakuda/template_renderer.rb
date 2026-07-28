@@ -16,7 +16,7 @@ module Rakuda
     def render(template_name, assigns)
       path = File.join(@layouts_dir, "#{template_name}.erb")
       template = ERB.new(File.read(path))
-      ctx = AssignContext.new(assigns)
+      ctx = AssignContext.new(assigns, self)
       template.result(ctx.get_binding)
     end
 
@@ -26,8 +26,14 @@ module Rakuda
     # 例: { site: {...}, page: {...} } → ERB 内で @site / @page が使える
     #
     class AssignContext
-      def initialize(assigns)
+      def initialize(assigns, renderer)
+        @assigns = assigns
+        @renderer = renderer
         assigns.each { |k, v| instance_variable_set("@#{k}", v) }
+      end
+
+      def render_partial(name, extra = {})
+        @renderer.render("_partials/#{name}", @assigns.merge(extra))
       end
 
       def get_binding = binding
