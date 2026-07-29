@@ -4,5 +4,10 @@ module Rakuda
 
     def self.run: (Array[String] argv) -> void
     def self.usage: () -> String
+
+    private
+
+    def self.build: (options options) -> void
+    def self.serve: (options options) -> void
   end
 end
