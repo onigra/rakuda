@@ -3,6 +3,7 @@
 require "time"
 require_relative "front_matter"
 require_relative "url_generator"
+require_relative "excerpt"
 require_relative "models/post"
 
 module Rakuda
@@ -15,6 +16,7 @@ module Rakuda
 
     def initialize(source_dir, config)
       @source_dir = source_dir
+      @config = config
       permalink = config.permalink_post || DEFAULT_PERMALINK_POST
       @url_gen = UrlGenerator.new(permalink)
     end
@@ -34,7 +36,7 @@ module Rakuda
       front, body = FrontMatter.parse_file(path)
       date = Time.parse(front.fetch("date").to_s)
       slug = front.fetch("slug")
-      summary, = FrontMatter.split_summary(body)
+      summary, has_more = Excerpt.build(body, length: @config.summary_length)
 
       Models::Post.new(
         title: front.fetch("title"),
@@ -44,7 +46,8 @@ module Rakuda
         draft: front["draft"] == true,
         body: body,
         url: @url_gen.post_url(date, slug),
-        summary: summary
+        summary: summary,
+        has_more: has_more
       )
     end
   end

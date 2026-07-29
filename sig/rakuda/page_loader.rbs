@@ -1,11 +1,9 @@
 module Rakuda
   class PageLoader
-    @source_dir: String
-
-    def self.load: (String source_dir) -> Array[Models::Page]
+    def self.load: (String source_dir, Config config) -> Array[Models::Page]
 
     private
 
-    def self.build: (String path) -> Models::Page
+    def self.build: (String path, Config config) -> Models::Page
   end
 end

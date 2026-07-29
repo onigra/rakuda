@@ -14,7 +14,7 @@ class TestPageGenerator < Test::Unit::TestCase
 
   def test_renders_static_page
     # Given
-    page = Rakuda::PageLoader.load(@root).first
+    page = Rakuda::PageLoader.load(@root, @config).first
 
     # When
     result = Rakuda::Generators::Page.new(

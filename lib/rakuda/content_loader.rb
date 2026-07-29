@@ -9,7 +9,7 @@ module Rakuda
     def self.load(source_dir, config)
       Models::Contents.new(
         posts: PostLoader.load(source_dir, config),
-        pages: PageLoader.load(source_dir)
+        pages: PageLoader.load(source_dir, config)
       )
     end
   end
