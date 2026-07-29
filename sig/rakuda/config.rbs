@@ -8,6 +8,7 @@ module Rakuda
       language: String,
       author: String,
       paginate: Integer,
+      summary_length: Integer,
       permalink_post: String?,
       taxonomy_category: String,
       params: Hash[untyped, untyped]
@@ -19,6 +20,7 @@ module Rakuda
       language: String,
       author: String,
       paginate: Integer,
+      summary_length: Integer,
       permalink_post: String?,
       taxonomy_category: String,
       params: Hash[untyped, untyped]
@@ -29,6 +31,7 @@ module Rakuda
     def language: () -> String
     def author: () -> String
     def paginate: () -> Integer
+    def summary_length: () -> Integer
     def permalink_post: () -> String?
     def taxonomy_category: () -> String
     def params: () -> Hash[untyped, untyped]

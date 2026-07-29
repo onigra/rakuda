@@ -56,6 +56,7 @@ def convert_config
     "language" => toml[/languageCode = "(.*?)"/, 1] || "ja",
     "author" => toml[/^\s*author = "(.*?)"/, 1] || "",
     "paginate" => 10, # Hugo config.toml には無いので rakuda のデフォルト値
+    "summary_length" => 100,
     "permalinks" => {"post" => toml[/post= "(.*?)"/, 1]},
     "taxonomies" => {"category" => toml[/category = "(.*?)"/, 1] || "categories"},
     "params" => {

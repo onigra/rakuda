@@ -11,6 +11,7 @@ class TestConfig < Test::Unit::TestCase
   data(
     "base_url" => ["https://example.com", :base_url],
     "paginate" => [10, :paginate],
+    "summary_length" => [100, :summary_length],
     "permalink_post" => ["/blog/:year/:month/:day/:slug/", :permalink_post]
   )
   def test_loads_site_yml(data)
