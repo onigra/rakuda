@@ -1,0 +1,8 @@
+module Rakuda
+  module Excerpt
+    DEFAULT_LENGTH: Integer
+
+    def self.plain_text: (String markdown) -> String
+    def self.build: (String body, ?length: Integer) -> [String, bool]
+  end
+end

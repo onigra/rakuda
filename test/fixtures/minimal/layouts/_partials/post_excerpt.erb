@@ -1,0 +1,7 @@
+<article class="post-excerpt">
+  <h2><a href="<%= @entry[:url] %>"><%= @entry[:title] %></a></h2>
+  <p class="summary"><%= @entry[:summary] %></p>
+  <% if @entry[:has_more] %>
+    <p><a href="<%= @entry[:url] %>" class="read-more">Read more</a></p>
+  <% end %>
+</article>
