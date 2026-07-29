@@ -17,10 +17,5 @@ module Rakuda
       parsed = PARSER.call(content)
       [parsed.front_matter, parsed.content]
     end
-
-    def self.split_summary(body)
-      parts = body.split("<!--more-->", 2)
-      (parts.length == 2) ? [parts[0].strip, parts[1].strip] : [body.strip, ""]
-    end
   end
 end
