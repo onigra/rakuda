@@ -43,7 +43,8 @@ module Rakuda
           url: @page.url,
           categories: @page.categories,
           content: content_html,
-          summary: @markdown.render(@page.summary),
+          summary: @page.summary,
+          has_more: @page.has_more,
           is_home: false
         }
       end

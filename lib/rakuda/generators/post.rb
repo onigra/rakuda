@@ -33,7 +33,8 @@ module Rakuda
           url: post.url,
           categories: post.categories,
           content: content_html,
-          summary: @markdown.render(post.summary),
+          summary: post.summary,
+          has_more: post.has_more,
           is_home: false
         }
       end

@@ -9,7 +9,8 @@ module Rakuda
         draft: bool,
         body: String,
         url: String,
-        summary: String
+        summary: String,
+        has_more: bool
       ) -> Post
 
       def initialize: (
@@ -20,7 +21,8 @@ module Rakuda
         draft: bool,
         body: String,
         url: String,
-        summary: String
+        summary: String,
+        has_more: bool
       ) -> void
 
       def title: () -> String
@@ -31,6 +33,7 @@ module Rakuda
       def body: () -> String
       def url: () -> String
       def summary: () -> String
+      def has_more: () -> bool
     end
   end
 end

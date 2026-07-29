@@ -8,6 +8,7 @@ module Rakuda
         date: (Time | nil),
         categories: Array[untyped],
         summary: String,
+        has_more: bool,
         content: nil
       ) -> Page
 
@@ -18,6 +19,7 @@ module Rakuda
         date: (Time | nil),
         categories: Array[untyped],
         summary: String,
+        has_more: bool,
         content: nil
       ) -> void
 
@@ -27,6 +29,7 @@ module Rakuda
       def date: () -> (Time | nil)
       def categories: () -> Array[untyped]
       def summary: () -> String
+      def has_more: () -> bool
       def content: () -> nil
     end
   end

@@ -17,7 +17,8 @@ module Factories
         draft: false,
         body: "Body",
         url: "/blog/2026/01/01/post/",
-        summary: "Summary"
+        summary: "Summary",
+        has_more: false
       }
 
       Rakuda::Models::Post.new(**defaults.merge(overrides))

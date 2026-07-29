@@ -28,8 +28,8 @@ class TestContentLoader < Test::Unit::TestCase
     # Then
     assert_equal "Hello", post.title
     assert_equal "/blog/2026/01/01/hello/", post.url
-    assert_include(post.summary, "Intro paragraph")
-    assert_not_include(post.summary, "Rest of post")
+    assert_equal "Intro paragraph. Rest of post.", post.summary
+    assert_equal false, post.has_more
   end
 
   def test_loads_pages
