@@ -2,6 +2,7 @@
 
 require "test_helper"
 require "rakuda/generators/home"
+require "rakuda/excerpt"
 
 class TestHomeGenerator < Test::Unit::TestCase
   def setup
@@ -45,5 +46,31 @@ class TestHomeGenerator < Test::Unit::TestCase
     # 各ページのナビゲーションが正しい
     assert_include(pages.first[:content], 'class="next"')
     assert_include(pages.last[:content], 'class="prev"')
+  end
+
+  def test_renders_excerpt_and_read_more
+    # Given
+    long_body = "# Long post\n\n#{"word " * 50}"
+    summary, has_more = Rakuda::Excerpt.build(long_body, length: 100)
+    post = Factories::PostFactory.build_post(
+      title: "Long post",
+      slug: "long-post",
+      body: long_body,
+      summary: summary,
+      has_more: has_more,
+      url: "/blog/2026/01/01/long-post/"
+    )
+
+    # When
+    pages = Rakuda::Generators::Home.new(
+      config: @config,
+      posts: [post],
+      renderer: @renderer,
+      markdown: @markdown
+    ).generate
+
+    # Then
+    assert_include(pages.first[:content], 'class="summary"')
+    assert_include(pages.first[:content], 'class="read-more"')
   end
 end

@@ -1,10 +1,8 @@
 <h1><%= @page[:title] %></h1>
 
-<ul>
 <% @pages.each do |entry| %>
-  <li><a href="<%= entry[:url] %>"><%= entry[:title] %></a></li>
+  <%= render_partial("post_excerpt", entry: entry) %>
 <% end %>
-</ul>
 
 <% if @paginator[:prev] %><a class="prev" href="<%= @paginator[:prev] %>">prev</a><% end %>
 <% if @paginator[:next] %><a class="next" href="<%= @paginator[:next] %>">next</a><% end %>
