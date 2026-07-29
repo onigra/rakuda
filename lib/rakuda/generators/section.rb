@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "cgi/escape"
+
 require_relative "../site_context"
 
 module Rakuda
@@ -39,7 +41,8 @@ module Rakuda
           date: post.date,
           url: post.url,
           categories: post.categories,
-          summary: @markdown.render(post.summary)
+          summary: CGI.escapeHTML(post.summary),
+          has_more: post.has_more
         }
       end
     end
