@@ -15,20 +15,6 @@ Hugo でビルドしている onigra.github.io ブログを、Ruby gem **rakuda*
 | gemspec | `rakuda.gemspec` |
 | 実行ファイル | `exe/rkd` |
 
-## 要件（合意済み）
-
-| 項目 | 決定 |
-|------|------|
-| URL 互換 | 全ページ完全一致（見た目の差異は許容） |
-| コンテンツ | 一度書き換えてよい（shortcode 削除、frontmatter 簡略化） |
-| SSG の置き場 | 別リポジトリの gem |
-| ブログ repo | Gemfile は置かない（CI で gem を参照） |
-| 開発 | 組み込み `serve`（rebuild は手動） |
-| アーキテクチャ | ミニマル・パイプライン型（アプローチ 1） |
-| 移行スクリプト | ブログ repo の `script/migrate.rb`（一回限り、~80 行） |
-| テスト | test/unit（stdlib） |
-| CLI | optparse（stdlib） |
-
 ## 現状分析（Hugo）
 
 - 記事 91 本 + `about.md`
@@ -74,21 +60,6 @@ Hugo でビルドしている onigra.github.io ブログを、Ruby gem **rakuda*
                ▼
            public/  → GitHub Pages
 ```
-
-### 責務分担
-
-**gem:**
-- 設定・コンテンツ読み込み
-- Markdown レンダリング
-- ERB テンプレート適用
-- 全ページ種別の生成
-- `public/` への書き出し
-- Rack による preview server
-
-**ブログ repo:**
-- 記事・設定・テンプレート・静的資産
-- 移行スクリプト（一回限り）
-- CI で gem を参照してビルド
 
 ## ビルドパイプライン
 
@@ -195,33 +166,6 @@ ERB コンテキスト:
 | `front_matter_parser` | frontmatter 解析 |
 | `rack` | preview server |
 
-### stdlib（追加 gem なし）
-
-| 機能 | 使用 |
-|------|------|
-| CLI | optparse |
-| テスト | test/unit |
-| 設定出力 | Psych（YAML） |
-| テンプレート | ERB |
-
-### 意図的に使わないもの
-
-- `thor`（optparse で代替）
-- `rspec`（test/unit で代替）
-- Hugo / hucore theme clone / Dart Sass
-
-## CLI
-
-```bash
-rkd build --source PATH --destination public
-rkd serve  --source PATH --port 4000
-```
-
-- `build`: パイプライン全ステージ実行
-- `serve`: 最新の `public/` を Rack で配信（rebuild は手動）
-
-optparse で `build` / `serve` を `ARGV.shift` 分岐。
-
 ## コンテンツ移行
 
 ### 設定
@@ -246,15 +190,10 @@ optparse で `build` / `serve` を `ARGV.shift` 分岐。
 | `{{< figure src="/images/yapc_lt.jpg" >}}` | `![YAPC LT](/images/yapc_lt.jpg)` |
 | `{{< twitter user="..." id="..." >}}` | 静的 blockquote HTML（テンプレート埋め込み） |
 
-### レイアウト
-
-Hugo Go template → ERB に手動変換。hucore の partials（header, footer, tags, pager）を vendoring。
-
 ### 静的資産
 
 hucore から vendoring:
 - `static/css/style.css`（Sass ビルド済み）
-- `static/wave.ico`
 - Font Awesome / highlight.js は CDN 参照（header.erb）
 
 ### 移行スクリプト
@@ -329,39 +268,6 @@ diff hugo-urls.txt ruby-urls.txt
 ```
 
 成功条件: diff が空。`/index.xml`, `/robots.txt` も確認。
-
-## CI / デプロイ
-
-### Before
-
-Hugo CLI + Dart Sass + hucore clone → `hugo --minify`
-
-### After
-
-```yaml
-- uses: ruby/setup-ruby@v1
-  with:
-    ruby-version: '3.3'
-- run: gem specific_install -l https://github.com/onigra/rakuda.git
-- run: rkd build --source . --destination public
-- uses: actions/upload-pages-artifact@v3
-  with:
-    path: ./public
-```
-
-gem 公開後は `gem install rakuda` に切り替え。
-
-ブログ repo に Gemfile は置かない。
-
-## 実装順序
-
-1. gem 骨格 + optparse CLI + `build`（Post のみ）
-2. URL 生成 + 全ページ種別 generator
-3. ERB レイアウト移植 + static vendoring
-4. `script/migrate.rb` 実行
-5. URL diff 検証（Hugo vs Ruby SSG）
-6. `serve` コマンド（Rack）
-7. CI 切り替え、Hugo 関連削除
 
 ## スコープ外
 
