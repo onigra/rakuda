@@ -14,13 +14,15 @@ module Rakuda
       end
 
       def generate
-        @posts.map do |post|
+        @posts.each_with_index.map do |post, index|
           content_html = @markdown.render(post.body)
           html = @renderer.render("single", {
             site: @site,
-            page: post_to_page_hash(post, content_html)
+            page: post_to_page_hash(post, content_html),
+            prev_post: adjacent_post(index, 1),
+            next_post: adjacent_post(index, -1)
           })
-          {url: post.url, content: html}
+          { url: post.url, content: html }
         end
       end
 
@@ -37,6 +39,13 @@ module Rakuda
           has_more: post.has_more,
           is_home: false
         }
+      end
+
+      def adjacent_post(index, offset)
+        post = @posts[index + offset]
+        return nil unless post
+
+        { title: post.title, url: post.url }
       end
     end
   end
