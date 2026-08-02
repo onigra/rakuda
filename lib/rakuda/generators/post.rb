@@ -22,7 +22,7 @@ module Rakuda
             prev_post: adjacent_post(index, 1),
             next_post: adjacent_post(index, -1)
           })
-          { url: post.url, content: html }
+          {url: post.url, content: html}
         end
       end
 
@@ -46,7 +46,7 @@ module Rakuda
         return nil if target_index.negative? || target_index >= @posts.size
 
         post = @posts[target_index]
-        { title: post.title, url: post.url }
+        {title: post.title, url: post.url}
       end
     end
   end
