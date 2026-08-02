@@ -1,0 +1,8 @@
+module Rinku
+  def self.auto_link: (
+    String text,
+    (:all | :urls | :email_addresses) mode,
+    String? link_attr,
+    Array[String]? skip_tags
+  ) -> String
+end
