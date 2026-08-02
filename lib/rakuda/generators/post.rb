@@ -42,9 +42,10 @@ module Rakuda
       end
 
       def adjacent_post(index, offset)
-        post = @posts[index + offset]
-        return nil unless post
+        target_index = index + offset
+        return nil if target_index.negative? || target_index >= @posts.size
 
+        post = @posts[target_index]
         { title: post.title, url: post.url }
       end
     end
