@@ -7,7 +7,7 @@ module Rakuda
     DEFAULT_LENGTH = 150
 
     def self.plain_text(markdown)
-      html = MarkdownRenderer.render(markdown)
+      html = MarkdownRenderer.render(markdown, autolink: false)
       html.gsub(/<[^>]+>/, " ")
         .gsub(/\s+/, " ")
         .strip
