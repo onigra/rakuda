@@ -1,5 +1,11 @@
 module Rakuda
   module MarkdownRenderer
-    def self.render: (String markdown) -> String
+    SKIP_TAGS: Array[String]
+
+    def self.render: (String markdown, ?autolink: bool) -> String
+
+    private
+
+    def self.html_for: (String markdown) -> String
   end
 end
