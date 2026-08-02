@@ -19,6 +19,7 @@ module Rakuda
       private
 
       def post_to_page_hash: (Models::Post post, String content_html) -> Hash[Symbol, untyped]
+      def adjacent_post: (Integer index, Integer offset) -> (Hash[Symbol, untyped]?)
     end
   end
 end
