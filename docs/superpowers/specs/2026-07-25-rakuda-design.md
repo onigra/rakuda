@@ -22,7 +22,7 @@ Hugo でビルドしている onigra.github.io ブログを、Ruby gem **rakuda*
 - カスタムレイアウト 5 ファイル + hucore テーマ（CI で clone）
 - Shortcode: `figure` 1 箇所、`twitter` 5 箇所（1 記事）
 - tags タクソノミ: 未使用
-- categories: frontmatter に記載あり
+- categories: 未使用（移行時に frontmatter から削除）
 - Disqus / GA: プレースホルダ（未使用）
 - 出力: `public/` → GitHub Pages
 
@@ -34,7 +34,6 @@ Hugo でビルドしている onigra.github.io ブログを、Ruby gem **rakuda*
 | Home | `/`, `/page/N/` |
 | Section | `/post/` |
 | Page | `/about/` |
-| Category | `/categories/name/` |
 | RSS | `/index.xml` |
 | Robots | `/robots.txt` |
 
@@ -87,9 +86,6 @@ paginate: 10
 permalinks:
   post: "/blog/:year/:month/:day/:slug/"
 
-taxonomies:
-  category: "categories"
-
 params:
   menu:
     - url: "/about/"
@@ -111,7 +107,7 @@ params:
 | `content/about.md` | Page（`url: /about/` を尊重） |
 
 Post 属性:
-- `title`, `slug`, `date`, `categories`, `draft`
+- `title`, `slug`, `date`, `draft`
 - `body`（Markdown 本文）
 - 算出: `url`, `summary`（`<!--more-->` または先頭 N 文字）
 
@@ -125,9 +121,6 @@ Post 属性:
 | Home | `/`, `/page/N/` | `layouts/list.erb` |
 | Section | `/post/` | `layouts/section.erb` |
 | Page | `/about/` | `layouts/single.erb` |
-| Category | `/categories/<slug>/` | `layouts/list.erb` |
-
-カテゴリ slug は Hugo 互換: 小文字化、スペース → ハイフン（例: `gh-actions` → `/categories/gh-actions/`）。
 
 | RSS | `/index.xml` | `layouts/rss.erb` |
 | Robots | `/robots.txt` | `layouts/robots.txt.erb` または固定文字列 |
@@ -139,7 +132,7 @@ ERB コンテキスト:
 ```ruby
 {
   site: { title:, base_url:, params: },
-  page: { title:, date:, content:, url:, categories:, summary:, ... },
+  page: { title:, date:, content:, url:, summary:, ... },
   pages: [...],
   paginator: { pages:, current:, total:, prev:, next: },
   grouped_by_year: { "2026" => [...], ... }
@@ -178,9 +171,8 @@ ERB コンテキスト:
 | フィールド | 扱い |
 |-----------|------|
 | `title`, `slug`, `date` | 維持 |
-| `categories` | スペース区切り → YAML 配列 |
+| `categories` | 削除 |
 | `comments` | 削除 |
-| `categories: null` | `[]` |
 | `url` | about のみ維持 |
 
 ### shortcode 置換（6 箇所）
@@ -226,7 +218,6 @@ rakuda/
 │       │   ├── post.rb
 │       │   ├── home.rb
 │       │   ├── section.rb
-│       │   ├── taxonomy.rb
 │       │   ├── rss.rb
 │       │   └── robots.rb
 │       ├── server.rb           # Rack
@@ -251,7 +242,6 @@ gem 本体見積: 800〜1,200 行（テスト除く）。
 
 - URL 生成（permalink パターン）
 - ページネーション（91 記事 ÷ 10 = 10 ページ）
-- カテゴリ URL 生成
 - frontmatter 解析
 - summary 分割（`<!--more-->`）
 - RSS XML 形式
@@ -273,6 +263,7 @@ diff hugo-urls.txt ruby-urls.txt
 
 - Disqus / Google Analytics 統合
 - tags タクソノミページ（未使用）
+- categories タクソノミページ（未使用）
 - sitemap（Hugo でも `--disableKinds=["sitemap"]` で無効）
 - ライブリロード
 - gem の `migrate` サブコマンド
