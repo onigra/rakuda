@@ -6,7 +6,6 @@ module Rakuda
         url: String,
         body: String,
         date: (Time | nil),
-        categories: Array[untyped],
         summary: String,
         has_more: bool,
         content: nil
@@ -17,7 +16,6 @@ module Rakuda
         url: String,
         body: String,
         date: (Time | nil),
-        categories: Array[untyped],
         summary: String,
         has_more: bool,
         content: nil
@@ -27,7 +25,6 @@ module Rakuda
       def url: () -> String
       def body: () -> String
       def date: () -> (Time | nil)
-      def categories: () -> Array[untyped]
       def summary: () -> String
       def has_more: () -> bool
       def content: () -> nil

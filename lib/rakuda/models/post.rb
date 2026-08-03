@@ -2,6 +2,6 @@
 
 module Rakuda
   module Models
-    Post = Data.define(:title, :slug, :date, :categories, :draft, :body, :url, :summary, :has_more)
+    Post = Data.define(:title, :slug, :date, :draft, :body, :url, :summary, :has_more)
   end
 end

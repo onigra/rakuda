@@ -2,6 +2,6 @@
 
 module Rakuda
   module Models
-    Page = Data.define(:title, :url, :body, :date, :categories, :summary, :has_more, :content)
+    Page = Data.define(:title, :url, :body, :date, :summary, :has_more, :content)
   end
 end

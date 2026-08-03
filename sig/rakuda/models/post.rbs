@@ -5,7 +5,6 @@ module Rakuda
         title: String,
         slug: String,
         date: Time,
-        categories: Array[untyped],
         draft: bool,
         body: String,
         url: String,
@@ -17,7 +16,6 @@ module Rakuda
         title: String,
         slug: String,
         date: Time,
-        categories: Array[untyped],
         draft: bool,
         body: String,
         url: String,
@@ -28,7 +26,6 @@ module Rakuda
       def title: () -> String
       def slug: () -> String
       def date: () -> Time
-      def categories: () -> Array[untyped]
       def draft: () -> bool
       def body: () -> String
       def url: () -> String
