@@ -6,7 +6,5 @@ paginate: 10
 summary_length: 100
 permalinks:
   post: "/blog/:year/:month/:day/:slug/"
-taxonomies:
-  category: "categories"
 params:
   menu: []
