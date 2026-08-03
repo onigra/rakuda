@@ -33,7 +33,6 @@ module Rakuda
           title: post.title,
           date: post.date,
           url: post.url,
-          categories: post.categories,
           content: content_html,
           summary: post.summary,
           has_more: post.has_more,

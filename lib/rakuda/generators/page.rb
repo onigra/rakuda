@@ -41,7 +41,6 @@ module Rakuda
           title: @page.title,
           date: @page.date,
           url: @page.url,
-          categories: @page.categories,
           content: content_html,
           summary: @page.summary,
           has_more: @page.has_more,

@@ -40,7 +40,6 @@ module Rakuda
           title: post.title,
           date: post.date,
           url: post.url,
-          categories: post.categories,
           summary: CGI.escapeHTML(post.summary),
           has_more: post.has_more
         }
