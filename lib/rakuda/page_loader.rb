@@ -23,7 +23,6 @@ module Rakuda
         url: front.fetch("url"),
         body: body,
         date: front["date"] ? Time.parse(front["date"].to_s) : nil,
-        categories: Array(front["categories"]),
         summary: summary,
         has_more: has_more,
         content: nil

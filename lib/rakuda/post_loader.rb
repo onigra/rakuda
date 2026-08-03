@@ -42,7 +42,6 @@ module Rakuda
         title: front.fetch("title"),
         slug: slug,
         date: date,
-        categories: Array(front["categories"]),
         draft: front["draft"] == true,
         body: body,
         url: @url_gen.post_url(date, slug),

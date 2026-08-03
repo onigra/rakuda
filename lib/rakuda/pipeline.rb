@@ -32,7 +32,6 @@ module Rakuda
       pages.concat Generators::Post.new(config:, posts: loaded.posts, renderer:, markdown:).generate
       pages.concat Generators::Home.new(config:, posts: loaded.posts, renderer:, markdown:).generate
       pages.concat Generators::Section.new(config:, posts: loaded.posts, renderer:, markdown:).generate
-      pages.concat Generators::Taxonomy.new(config:, posts: loaded.posts, renderer:, markdown:).generate
       loaded.pages.each do |page|
         pages << Generators::Page.new(config:, page:, renderer:, markdown:).generate
       end
