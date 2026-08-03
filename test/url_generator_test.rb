@@ -14,15 +14,6 @@ class TestUrlGenerator < Test::Unit::TestCase
     assert_equal "/blog/2026/07/20/hello-world/", url
   end
 
-  def test_category_slug
-    assert_equal "gh-actions", Rakuda::UrlGenerator.category_slug("gh-actions")
-    assert_equal "mysql", Rakuda::UrlGenerator.category_slug("MySQL")
-  end
-
-  def test_category_url
-    assert_equal "/categories/ruby/", @gen.category_url("ruby")
-  end
-
   def test_home_pagination_urls
     assert_equal "/", @gen.home_page_url(1)
     assert_equal "/page/2/", @gen.home_page_url(2)

@@ -27,30 +27,6 @@ module Rakuda
 
     ###
     #
-    # カテゴリーのスラッグを返す
-    # カテゴリーのスラッグは、カテゴリー名を小文字にし、スペースをハイフンに変換したもの
-    #
-    # Taxonomy generator などで、URL 全体ではなく slug だけ欲しくなることがあるので、
-    # private method ではなく publicな class method にしてある
-    #
-    # @param name [String] カテゴリー名
-    # @return [String] カテゴリーのスラッグ
-    #
-    def self.category_slug(name)
-      name.downcase.gsub(/\s+/, "-")
-    end
-
-    ###
-    #
-    # @param name [String] カテゴリー名
-    # @return [String] カテゴリーの URL
-    #
-    def category_url(name)
-      "/categories/#{self.class.category_slug(name)}/"
-    end
-
-    ###
-    #
     # トップページ（記事一覧）のページネーション用 URL を返すメソッド
     # ブログのトップページは記事が増えると複数ページに分割される
     # このメソッドは「何ページ目か」から、そのページの URL パスを決める
