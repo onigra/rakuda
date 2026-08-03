@@ -13,7 +13,6 @@ module Factories
         title: "Post",
         slug: "post",
         date: Date.new(2026, 1, 1),
-        categories: ["ruby"],
         draft: false,
         body: "Body",
         url: "/blog/2026/01/01/post/",
