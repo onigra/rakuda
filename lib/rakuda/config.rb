@@ -7,7 +7,7 @@ require_relative "excerpt"
 module Rakuda
   Config = Data.define(
     :base_url, :title, :language, :author, :paginate, :summary_length,
-    :permalink_post, :taxonomy_category, :params
+    :permalink_post, :params
   )
   class Config
     def self.load(path)
@@ -22,7 +22,6 @@ module Rakuda
         paginate: data.fetch("paginate", 10),
         summary_length: data.fetch("summary_length", Excerpt::DEFAULT_LENGTH),
         permalink_post: data.dig("permalinks", "post"),
-        taxonomy_category: data.dig("taxonomies", "category") || "categories",
         params: data.fetch("params", default_params)
       )
     end

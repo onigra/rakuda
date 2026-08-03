@@ -10,7 +10,6 @@ module Rakuda
       paginate: Integer,
       summary_length: Integer,
       permalink_post: String?,
-      taxonomy_category: String,
       params: Hash[untyped, untyped]
     ) -> Config
 
@@ -22,7 +21,6 @@ module Rakuda
       paginate: Integer,
       summary_length: Integer,
       permalink_post: String?,
-      taxonomy_category: String,
       params: Hash[untyped, untyped]
     ) -> void
 
@@ -33,7 +31,6 @@ module Rakuda
     def paginate: () -> Integer
     def summary_length: () -> Integer
     def permalink_post: () -> String?
-    def taxonomy_category: () -> String
     def params: () -> Hash[untyped, untyped]
   end
 end
