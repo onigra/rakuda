@@ -184,8 +184,9 @@ ERB コンテキスト:
 
 ### 静的資産
 
-hucore から vendoring:
-- `static/css/style.css`（Sass ビルド済み）
+ブログの見た目は [2026-11-15 ブログレイアウト CSS 方針](./2026-11-15-blog-layout-css-design.md) を参照（正本は `onigra.github.io` 側 spec）。
+
+- `static/css/layout.css`（色・フォント非指定、レイアウトのみ）
 - Font Awesome / highlight.js は CDN 参照（header.erb）
 
 ### 移行スクリプト
